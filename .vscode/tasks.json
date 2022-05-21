@@ -8,8 +8,8 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "test_cq.c",
-                "${workspaceFolder}/Examples/../Circular_Queue/src/cq.c",
-                "-I${workspaceFolder}/Examples/../Circular_Queue/src/",
+                "${workspaceFolder}/Examples/../library/Circular_Queue/cq.c",
+                "-I${workspaceFolder}/Examples/../library/Circular_Queue/",
                 "-o",
                 "${workspaceFolder}/Examples/build/cq_test"
             ],
@@ -33,8 +33,8 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "test_fifo.c",
-                "${workspaceFolder}/Examples/../FiFo/src/fifo.c",
-                "-I${workspaceFolder}/Examples/../FiFo/src/",
+                "${workspaceFolder}/Examples/../library/FIFO/fifo.c",
+                "-I${workspaceFolder}/Examples/../library/FIFO/",
                 "-o",
                 "${workspaceFolder}/Examples/build/fifo_test"
             ],
