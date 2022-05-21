@@ -1,14 +1,26 @@
+/**
+ * @file    cq.h
+ * @author  Pranjal Chanda (pranjalchanda08@gmail.com)
+ * @brief   Circular Queue Library for any Data Type / Data Structure in C
+ * @version 0.1
+ * @date    2022-05-21
+ *
+ * Copyright (c) 2019-2022 Open License
+ * 
+ */
+
 #ifndef _CQ_H_
 #define _CQ_H_
 
-#include <inttypes.h>
 #include <string.h>
 
 #define CONCAT_2(a, b)          a##b
 #define CONCAT_3(a, b, c)       a##b##c
 
-#define CQ_SUCCESS              0U
-#define CQ_FAILURE              1U
+typedef enum cq_err {
+    CQ_SUCCESS,
+    CQ_FAILURE
+} cq_ret_t;
 
 typedef struct cq
 {
@@ -36,43 +48,44 @@ typedef struct cq
  * 
  * @param p_cq          Pointer to CQ instance 
  * @param p_element     Pointer to element to be enqued
- * @return int          CQ_SUCCESS or CQ_FAILURE 
+ * @return cq_ret_t     CQ_SUCCESS or CQ_FAILURE 
  */
-int cq_enqueue(cq_t *p_cq, char *p_element);
+cq_ret_t cq_enqueue(cq_t *p_cq, char *p_element);
 
 /**
  * @brief Dequeue Element from Queue Front
  * 
  * @param p_cq          Pointer to CQ instance 
  * @param p_element     Pointer to fetch dequed element
- * @return int          CQ_SUCCESS or CQ_FAILURE 
+ * @return cq_ret_t     CQ_SUCCESS or CQ_FAILURE 
  */
-int cq_dequeue(cq_t *p_cq, char *p_element);
+cq_ret_t cq_dequeue(cq_t *p_cq, char *p_element);
 
 /**
  * @brief Peak Queue Next Available element
  * 
  * @param p_cq          Pointer to CQ instance 
  * @param p_element     Pointer to element to to peak
- * @return int          CQ_SUCCESS or CQ_FAILURE 
+ * @return cq_ret_t     CQ_SUCCESS or CQ_FAILURE 
  */
-int cq_peak(cq_t *p_cq, char *p_element);
+cq_ret_t cq_peak(cq_t *p_cq, char *p_element);
 
 /**
  * @brief Returns the pointer to the element at the front
  * 
  * @param p_cq          Pointer to CQ instance 
  * @param p_element     Pointer to element returned
- * @return int          CQ_SUCCESS or CQ_FAILURE 
+ * @return cq_ret_t     CQ_SUCCESS or CQ_FAILURE 
  */
-int cq_front(cq_t *p_cq, char *p_element);
+cq_ret_t cq_front(cq_t *p_cq, char *p_element);
 
 /**
  * @brief Returns the pointer to the element at the back
  *
  * @param p_cq          Pointer to CQ instance
  * @param p_element     Pointer to element returned
- * @return int          CQ_SUCCESS or CQ_FAILURE
+ * @return cq_ret_t     CQ_SUCCESS or CQ_FAILURE
  */
-int cq_back(cq_t *p_cq, char *p_element);
-#endif
+cq_ret_t cq_back(cq_t *p_cq, char *p_element);
+
+#endif /* _CQ_H_ */
