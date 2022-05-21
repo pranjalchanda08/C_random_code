@@ -1,5 +1,6 @@
 #include "cq.h"
 #include "stdio.h"
+#include "stdlib.h"
 
 #define CQ_INS &(CQ_INSTANCE(CQ_DEMO))          /* Instance Name as cq_CQ_DEMO_inst */
 
@@ -9,7 +10,9 @@ void main()
 {
     int choice;
     int element;
-    while(1)    /* CTRL + C to break */
+    system("clear");
+    printf("Launch Circular Queue Test\nOwner: Pranjal Chanda (pranjalchanda08@gmail.com)\n");
+    while (1) /* CTRL + C to break */
     {
         printf("\nEnter Choice: \n");
         printf("1. Enqueue Element\n");

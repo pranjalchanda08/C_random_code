@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Launch",
+            "name": "Debug cq_test",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/Examples/build/cq_test",
@@ -16,6 +16,7 @@
             "externalConsole": false,
             "MIMode": "gdb",
             "preLaunchTask": "Build cq_test",
+            "postDebugTask": "Clean all",
             "miDebuggerPath": "/usr/bin/gdb",
             "setupCommands": [
                 {
