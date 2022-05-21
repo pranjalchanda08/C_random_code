@@ -55,6 +55,7 @@ cq_ret_t cq_dequeue(cq_t *p_cq, char *p_element)
     if (p_cq->head == p_cq->tail)
     {
         p_cq->head = p_cq->tail = (size_t)-1;
+        memset(p_cq->p_buffer, 0, p_cq->size);
     }
     else
     {
