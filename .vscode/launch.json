@@ -47,6 +47,28 @@
                     "ignoreFailures": true
                 },
             ]
+        },
+        {
+            "name": "Debug sort_test",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Examples/build/sort_test",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Examples",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "Build sort_test",
+            "postDebugTask": "Clean all",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+            ]
         }
 
     ]

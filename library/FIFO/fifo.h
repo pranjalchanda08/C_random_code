@@ -14,12 +14,13 @@
 
 #include <string.h>
 
-#define CONCAT_2(a, b) a##b
-#define CONCAT_3(a, b, c) a##b##c
+#define FIFO_CONCAT_2(a, b) a##b
+#define FIFO_CONCAT_3(a, b, c) a##b##c
 
 typedef unsigned char u_char;
 
-typedef enum fifo_err {
+typedef enum fifo_err
+{
     FIFO_SUCCESS,
     FIFO_FAILURE
 } fifo_ret_t;
@@ -34,21 +35,21 @@ typedef struct cq
     size_t tail;
 } fifo_t;
 
-#define FIFO_INIT_BUFFER_CIRCULAR(_NAME, _size, _type)   FIFO_INIT_BUFFER(_NAME, _size, _type, 1)
-#define FIFO_INIT_BUFFER_LINEAR(_NAME, _size, _type)     FIFO_INIT_BUFFER(_NAME, _size, _type, 0)
+#define FIFO_INIT_BUFFER_CIRCULAR(_NAME, _size, _type) FIFO_INIT_BUFFER(_NAME, _size, _type, 1)
+#define FIFO_INIT_BUFFER_LINEAR(_NAME, _size, _type) FIFO_INIT_BUFFER(_NAME, _size, _type, 0)
 
-#define FIFO_INIT_BUFFER(_NAME, _size, _type, _is_circular)                 \
-    static char CONCAT_2(_NAME, _fifo_buffer)[(_size * sizeof(_type)) + 1]; \
-    static fifo_t CONCAT_3(fifo_, _NAME, _inst) =                           \
-        {                                                                   \
-            .is_circular = _is_circular,                                    \
-            .p_buffer = CONCAT_2(_NAME, _fifo_buffer),                      \
-            .size = (_size * sizeof(_type)),                                \
-            .element_size = sizeof(_type),                                  \
-            .head = -1,                                                     \
+#define FIFO_INIT_BUFFER(_NAME, _size, _type, _is_circular)                      \
+    static char FIFO_CONCAT_2(_NAME, _fifo_buffer)[(_size * sizeof(_type)) + 1]; \
+    static fifo_t FIFO_CONCAT_3(fifo_, _NAME, _inst) =                           \
+        {                                                                        \
+            .is_circular = _is_circular,                                         \
+            .p_buffer = FIFO_CONCAT_2(_NAME, _fifo_buffer),                      \
+            .size = (_size * sizeof(_type)),                                     \
+            .element_size = sizeof(_type),                                       \
+            .head = -1,                                                          \
             .tail = -1};
 
-#define FIFO_INSTANCE(_NAME) CONCAT_3(fifo_, _NAME, _inst)
+#define FIFO_INSTANCE(_NAME) FIFO_CONCAT_3(fifo_, _NAME, _inst)
 
 /**
  * @brief Enqueue Element to the Queue back

@@ -2,6 +2,11 @@
     "files.associations": {
         "cq.h": "c",
         "string.h": "c",
-        "fifo.h": "c"
+        "fifo.h": "c",
+        "sort.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c"
     }
 }
