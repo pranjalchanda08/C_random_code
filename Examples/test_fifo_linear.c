@@ -2,16 +2,16 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-#define FIFO_INS &(FIFO_INSTANCE(FIFO_DEMO))            /* Instance Name as fifo_FIFO_DEMO_inst */
+#define FIFO_INS &(FIFO_INSTANCE(FIFO_DEMO))                /* Instance Name as fifo_FIFO_DEMO_inst */
 
-FIFO_INIT_BUFFER(FIFO_DEMO, 5, int);                    /* Create Static Buffer and CQ instance */
+FIFO_INIT_BUFFER_LINEAR(FIFO_DEMO, 5, int);                 /* Create Static Buffer and Non CQ instance */
 
 void main()
 {
     int choice;
     int element;
     system("clear");
-    printf("Launch FIFO Test\nOwner: Pranjal Chanda (pranjalchanda08@gmail.com)\n");
+    printf("Launch Linear FIFO Test\nOwner: Pranjal Chanda (pranjalchanda08@gmail.com)\n");
     while (1) /* CTRL + C to break */
     {
         printf("\nEnter Choice: \n");

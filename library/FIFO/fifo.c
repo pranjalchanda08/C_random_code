@@ -23,7 +23,13 @@ fifo_ret_t fifo_enqueue(fifo_t *p_fifo, char *p_element)
 
     if ((p_fifo->tail + p_fifo->element_size) % p_fifo->size == p_fifo->head) // condition to check queue is full
     {
-        return FIFO_FAILURE;
+        FIFO_ASSERT(!p_fifo->is_circular);
+
+        p_fifo->tail += p_fifo->element_size;
+        p_fifo->tail %= p_fifo->size;
+        p_fifo->head += p_fifo->element_size;
+        p_fifo->head %= p_fifo->size;
+
     }
     else
     {
@@ -47,7 +53,7 @@ fifo_ret_t fifo_enqueue(fifo_t *p_fifo, char *p_element)
 
 fifo_ret_t fifo_dequeue(fifo_t *p_fifo, char *p_element)
 {
-    FIFO_ASSERT(p_fifo->tail == (size_t)-1);
+    FIFO_ASSERT(p_fifo->head == (size_t)-1);
     memcpy(p_element, p_fifo->p_buffer + p_fifo->head, p_fifo->element_size);
     if (p_fifo->head == p_fifo->tail)
     {

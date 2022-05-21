@@ -17,8 +17,9 @@
 #define CONCAT_2(a, b) a##b
 #define CONCAT_3(a, b, c) a##b##c
 
-typedef enum fifo_err
-{
+typedef unsigned char u_char;
+
+typedef enum fifo_err {
     FIFO_SUCCESS,
     FIFO_FAILURE
 } fifo_ret_t;
@@ -26,16 +27,21 @@ typedef enum fifo_err
 typedef struct cq
 {
     char *p_buffer;
+    const u_char is_circular : 1;
     size_t size;
     size_t element_size;
     size_t head;
     size_t tail;
 } fifo_t;
 
-#define FIFO_INIT_BUFFER(_NAME, _size, _type)                               \
+#define FIFO_INIT_BUFFER_CIRCULAR(_NAME, _size, _type)   FIFO_INIT_BUFFER(_NAME, _size, _type, 1)
+#define FIFO_INIT_BUFFER_LINEAR(_NAME, _size, _type)     FIFO_INIT_BUFFER(_NAME, _size, _type, 0)
+
+#define FIFO_INIT_BUFFER(_NAME, _size, _type, _is_circular)                 \
     static char CONCAT_2(_NAME, _fifo_buffer)[(_size * sizeof(_type)) + 1]; \
     static fifo_t CONCAT_3(fifo_, _NAME, _inst) =                           \
         {                                                                   \
+            .is_circular = _is_circular,                                    \
             .p_buffer = CONCAT_2(_NAME, _fifo_buffer),                      \
             .size = (_size * sizeof(_type)),                                \
             .element_size = sizeof(_type),                                  \

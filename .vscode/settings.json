@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "cq.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "fifo.h": "c"
     }
 }

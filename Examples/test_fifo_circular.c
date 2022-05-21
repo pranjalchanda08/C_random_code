@@ -1,10 +1,10 @@
-#include "cq.h"
+#include "fifo.h"
 #include "stdio.h"
 #include "stdlib.h"
 
-#define CQ_INS &(CQ_INSTANCE(CQ_DEMO))          /* Instance Name as cq_CQ_DEMO_inst */
+#define FIFO_INS &(FIFO_INSTANCE(FIFO_DEMO))                  /* Instance Name as fifo_FIFO_DEMO_inst */
 
-CQ_INIT_BUFFER(CQ_DEMO, 5, int);                /* Create Static Buffer and CQ instance */
+FIFO_INIT_BUFFER_CIRCULAR(FIFO_DEMO, 5, int);                 /* Create Static Buffer and FIFO instance */
 
 void main()
 {
@@ -24,13 +24,13 @@ void main()
         case 1:
             printf("Enter Element: ");
             scanf("%d", &element);
-            cq_enqueue(CQ_INS, (char *)&element);
+            fifo_enqueue(FIFO_INS, (char *)&element);
             break;
         case 2:
-            cq_dequeue(CQ_INS, (char *)&element) == CQ_SUCCESS ? printf("Element Deqeue: %d", element) : printf("Underflow\n");
+            fifo_dequeue(FIFO_INS, (char *)&element) == FIFO_SUCCESS ? printf("Element Deqeue: %d", element) : printf("Underflow\n");
             break;
         case 3:
-            cq_peak(CQ_INS, (char *)&element) == CQ_SUCCESS ? printf("Element Deqeue: %d", element) : printf("Underflow\n");
+            fifo_peak(FIFO_INS, (char *)&element) == FIFO_SUCCESS ? printf("Element Deqeue: %d", element) : printf("Underflow\n");
             break;
         default:
             break;
