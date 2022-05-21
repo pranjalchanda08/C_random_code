@@ -2,18 +2,19 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "Build queue",
+            "label": "Build cq_test",
             "command": "/usr/bin/gcc",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "main.c",
-                "cq.c",
+                "test_cq.c",
+                "${workspaceFolder}/Examples/../Circular_Queue/src/cq.c",
+                "-I${workspaceFolder}/Examples/../Circular_Queue/src/",
                 "-o",
-                "${workspaceFolder}/Circular_Queue/a.out"
+                "${workspaceFolder}/Examples/build/cq_test"
             ],
             "options": {
-                "cwd": "${workspaceFolder}/Circular_Queue"
+                "cwd": "${workspaceFolder}/Examples"
             },
             "problemMatcher": [
                 "$gcc"

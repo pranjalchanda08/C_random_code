@@ -8,14 +8,14 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Circular_Queue/a.out",
+            "program": "${workspaceFolder}/Examples/build/cq_test",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/Circular_Queue",
+            "cwd": "${workspaceFolder}/Examples",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "preLaunchTask": "Build queue",
+            "preLaunchTask": "Build cq_test",
             "miDebuggerPath": "/usr/bin/gdb",
             "setupCommands": [
                 {
