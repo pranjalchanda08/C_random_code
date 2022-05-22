@@ -26,7 +26,8 @@ void main()
     {
         printf("%c, %d\n", buff[i].x, buff[i].prior);
     }
-    bubbleSort(&sort_DEMO_inst);
+    // bubbleSort(&sort_DEMO_inst);
+    insertionSort(&sort_DEMO_inst);
 
     printf("Structure buffer after sorting: \n");
     for (size_t i = 0; i < sizeof(buff) / sizeof(ds_t); i++)

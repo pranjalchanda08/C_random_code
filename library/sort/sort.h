@@ -49,5 +49,6 @@ typedef struct sort
         .p_dummy_buff = (char *)SORT_CONCAT_3(sort_, _NAME, _dummy_buff)};
 
 void bubbleSort(sort_t *p_sort);
+void insertionSort(sort_t *p_sort);
 
 #endif /*_SORT_H_*/
