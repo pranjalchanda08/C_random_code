@@ -77,6 +77,28 @@
         },
         {
             "type": "cppbuild",
+            "label": "Build all",
+            "dependsOn":[
+                "Build cq_test",
+                "Build fifo_test",
+                "Build sort_test",
+            ],
+            "command": "echo",
+            "args": [
+                "Build",
+                "Done!"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/Examples"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Build all binary"
+        },
+        {
+            "type": "cppbuild",
             "label": "Clean all",
             "command": "git",
             "args": [

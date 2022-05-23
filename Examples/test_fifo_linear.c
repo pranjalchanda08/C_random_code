@@ -24,13 +24,13 @@ void main()
         case 1:
             printf("Enter Element: ");
             scanf("%d", &element);
-            fifo_enqueue(FIFO_INS, (char *)&element) == FIFO_SUCCESS ? 0 : printf("Overflow\n");
+            fifo_enqueue(FIFO_INS, (char *)&element) == FIFO_SUCCESS ? 0 : printf("Err: Overflow\n");
             break;
         case 2:
-            fifo_dequeue(FIFO_INS, (char *)&element) == FIFO_SUCCESS ? printf("Element Deqeue: %d", element) : printf("Underflow\n");
+            fifo_dequeue(FIFO_INS, (char *)&element) == FIFO_SUCCESS ? printf("Element Deqeue: %d", element) : printf("Err: Underflow\n");
             break;
         case 3:
-            fifo_peak(FIFO_INS, (char *)&element) == FIFO_SUCCESS ? printf("Element Deqeue: %d", element) : printf("Underflow\n");
+            fifo_peak(FIFO_INS, (char *)&element) == FIFO_SUCCESS ? printf("Element Deqeue: %d", element) : printf("Err: Underflow\n");
             break;
         default:
             break;
