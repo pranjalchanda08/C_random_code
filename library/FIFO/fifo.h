@@ -17,7 +17,7 @@
 #define FIFO_CONCAT_2(a, b) a##b
 #define FIFO_CONCAT_3(a, b, c) a##b##c
 
-typedef unsigned char u_char;
+typedef const unsigned char cu_ch;
 
 typedef enum fifo_err
 {
@@ -27,16 +27,41 @@ typedef enum fifo_err
 
 typedef struct cq
 {
-    char *p_buffer;
-    const u_char is_circular : 1;
+    char * p_buffer;
+    cu_ch  is_circular : 1;
     size_t size;
     size_t element_size;
     size_t head;
     size_t tail;
 } fifo_t;
 
+/**
+ * @brief Define a Circular Buffer instance
+ * 
+ * @param _NAME     Name of the Buffer and instance
+ * @param _size     FIFO depth
+ * @param _type     data type of FIFO
+ * 
+ */
 #define FIFO_INIT_BUFFER_CIRCULAR(_NAME, _size, _type) FIFO_INIT_BUFFER(_NAME, _size, _type, 1)
+
+/**
+ * @brief Define a Linear Buffer instance
+ * 
+ * @param _NAME     Name of the Buffer and instance
+ * @param _size     FIFO depth
+ * @param _type     data type of FIFO
+ * 
+ */
 #define FIFO_INIT_BUFFER_LINEAR(_NAME, _size, _type) FIFO_INIT_BUFFER(_NAME, _size, _type, 0)
+/**
+ * @brief Get instance of FIFO by its _NAME
+ *
+ * @param _NAME     Name of the Buffer and instance
+ *
+ */
+
+#define FIFO_INSTANCE(_NAME) FIFO_CONCAT_3(fifo_, _NAME, _inst)
 
 #define FIFO_INIT_BUFFER(_NAME, _size, _type, _is_circular)                      \
     static char FIFO_CONCAT_2(_NAME, _fifo_buffer)[(_size * sizeof(_type)) + 1]; \
@@ -48,8 +73,6 @@ typedef struct cq
             .element_size = sizeof(_type),                                       \
             .head = -1,                                                          \
             .tail = -1};
-
-#define FIFO_INSTANCE(_NAME) FIFO_CONCAT_3(fifo_, _NAME, _inst)
 
 /**
  * @brief Enqueue Element to the Queue back

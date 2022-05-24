@@ -8,14 +8,14 @@ typedef struct ds
 } ds_t;
 
 static ds_t def_buff[] = {
-    {'A', 1},
-    {'B', 4},
+    {'A', 0},
+    {'B', 0},
     {'c', 0},
-    {'D', 3},
-    {'E', 2},
+    {'D', 0},
+    {'E', 0},
 };
 
-static ds_t buff[10];
+static ds_t buff[sizeof(def_buff) / sizeof(ds_t)];
 
 SORT_INSTANCE_STRUCT(DEMO, ds_t, buff, prior);
 
@@ -39,10 +39,10 @@ void main()
         switch (choice)
         {
             case 1:
-                bubbleSort(&sort_DEMO_inst);
+                bubble_sort(&sort_DEMO_inst, SORT_DIRECTION_DESSENDING);
                 break;
             case 2:
-                insertionSort(&sort_DEMO_inst);
+                insertion_sort(&sort_DEMO_inst, SORT_DIRECTION_DESSENDING);
                 break;
             default:
                 printf("Incorrect Choice\n");
