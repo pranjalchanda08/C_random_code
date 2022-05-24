@@ -7,7 +7,7 @@ typedef struct ds
     int prior;
 } ds_t;
 
-static ds_t buff[] = {
+static ds_t def_buff[] = {
     {'A', 1},
     {'B', 4},
     {'c', 0},
@@ -15,23 +15,44 @@ static ds_t buff[] = {
     {'E', 2},
 };
 
+static ds_t buff[10];
+
 SORT_INSTANCE_STRUCT(DEMO, ds_t, buff, prior);
 
 void main()
 {
+    int choice;
     system("clear");
-    printf("Launch Bubble Sort Struct Test\nOwner: Pranjal Chanda (pranjalchanda08@gmail.com)\n");
-    printf("Structure buffer before sorting: \n");
-    for (size_t i = 0; i < sizeof(buff) / sizeof(ds_t); i++)
+    printf("Launch Sort Struct Test\nOwner: Pranjal Chanda (pranjalchanda08@gmail.com)\n");
+    while(1)
     {
-        printf("%c, %d\n", buff[i].x, buff[i].prior);
-    }
-    // bubbleSort(&sort_DEMO_inst);
-    insertionSort(&sort_DEMO_inst);
+        printf("\nEnter Choice: \n");
+        printf("1. Bubble Sort\n");
+        printf("2. Insertion Sort\n");
+        scanf("%d", &choice);
+        memcpy(buff, def_buff, sizeof(def_buff));
+        printf("Structure buffer before sorting: \n");
+        for (size_t i = 0; i < sizeof(buff) / sizeof(ds_t); i++)
+        {
+            printf("%c, %d\n", buff[i].x, buff[i].prior);
+        }
+        switch (choice)
+        {
+            case 1:
+                bubbleSort(&sort_DEMO_inst);
+                break;
+            case 2:
+                insertionSort(&sort_DEMO_inst);
+                break;
+            default:
+                printf("Incorrect Choice\n");
+                break;
+        }
 
-    printf("Structure buffer after sorting: \n");
-    for (size_t i = 0; i < sizeof(buff) / sizeof(ds_t); i++)
-    {
-        printf("%c, %d\n", buff[i].x, buff[i].prior);
+        printf("Structure buffer after sorting: \n");
+        for (size_t i = 0; i < sizeof(buff) / sizeof(ds_t); i++)
+        {
+            printf("%c, %d\n", buff[i].x, buff[i].prior);
+        }        
     }
 }
